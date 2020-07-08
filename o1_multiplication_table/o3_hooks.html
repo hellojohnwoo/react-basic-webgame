@@ -1,0 +1,56 @@
+<html>
+    <head>
+        <script crossorigin src="https://unpkg.com/react@16.7.0/umd/react.production.min.js"></script>
+        <script crossorigin src="https://unpkg.com/react-dom@16.7.0/umd/react-dom.production.min.js"></script>
+        <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    </head>
+    <body>
+        <div id="root"></div>
+        <script type="text/babel">
+
+            const MulitpliHooks = () => {       // Destructuring assignment
+                const [ firstNumber, setFirstNumber ] = React.useState(Math.ceil(Math.random() * 9));
+                const [ secondNumber, setSecondNumber ] = React.useState(Math.ceil(Math.random() * 9));
+                const [ value, setValue ] = React.useState('');
+                const [ result, setResult ] = React.useState('');
+                const inputRef = React.useRef(null);
+
+                const onChangInput = (e) => {
+                    setValue(e.target.value);
+                };
+
+                const onSubmitForm  = (e) => {
+                    e.preventDefault();
+                    if (parseInt(value) === firstNumber * secondNumber) {
+                        // asynchronous Just One Time Rendering, Judge From React
+                        setResult('Right Answer :' + value);
+                        setFirstNumber(Math.ceil(Math.random() * 9));
+                        setSecondNumber(Math.ceil(Math.random() * 9));
+                        setValue('');
+                        inputRef.current.focus();
+                    } else  {
+                        setResult('Wrong Answer : ' + value);
+                        setValue('');
+                        inputRef.current.focus();
+                    }
+                };
+
+                console.log('rendering in hooks, state change => rendering')
+                return (
+                    <React.Fragment>
+                        <div>{firstNumber} X {secondNumber} = ?</div>
+                        <form onSubmit={}>
+                            <input ref={inputRef} onChange={onChangInput} value={value}/>
+                            <button>Input Number</button>
+                        </form>
+                        <div id="result">{result}</div>);
+                    </React.Fragment>
+                );
+            }
+
+        </script>
+        <script type="text/babel">
+            ReactDOM.render(<div><MulitpliHooks /></div>, document.querySelector('#root'));
+        </script>
+    </body>
+</html>
