@@ -5,11 +5,22 @@ module.exports = {
     mode: 'development', // When Starting to Service: production
     devtool: 'eval',
     resolve: {
-        extensions: [ '.js', 'jsx' ]
+        extensions: [ '.js', '.jsx' ]
     },
 
     entry: {                                        // input
         app: [ './client' ],
+    },
+
+    module: {
+        rules: [{
+            test: /\.jsx?$/,
+            loader: 'babel-loader',
+            options: {
+                presets:['@babel/preset-env', '@babel/preset-react'],
+                plugins: ['@babel/plugin-proposal-class-properties'],
+            },
+        }],
     },
 
     output: {                                       // output

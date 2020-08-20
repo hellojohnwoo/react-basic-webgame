@@ -1,7 +1,7 @@
 const React = require('react');
 const { useState, useRef } = React;
 
-const MulitpliWebPack = () => {       // Destructuring assignment
+const o4_MulitpliWebPack = () => {       // Destructuring assignment
     const [ firstNumber, setFirstNumber ] = useState(Math.ceil(Math.random() * 9));
     const [ secondNumber, setSecondNumber ] = useState(Math.ceil(Math.random() * 9));
     const [ value, setValue ] = useState('');
@@ -40,4 +40,4 @@ const MulitpliWebPack = () => {       // Destructuring assignment
     );
 }
 
-module.exports = MulitpliWebPack;
+module.exports = o4_MulitpliWebPack;
