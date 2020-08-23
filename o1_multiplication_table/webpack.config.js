@@ -3,7 +3,7 @@ const webpack = require('webpack');
 
 module.exports = {
     mode: 'development',
-    devtool: 'eval', // hidden-source-map
+    devtool: 'eval', // mode: 'production', devtool: 'hidden-source-map'
     resolve: {
         extensions: ['.jsx', '.js'],
     },
@@ -19,7 +19,7 @@ module.exports = {
                 presets: [
                     ['@babel/preset-env', {
                         targets: {
-                            browsers: ['> 1% in KR'], // browserslist
+                            browsers: ['> 1%'], // browserslist
                         },
                         debug: true,
                     }],

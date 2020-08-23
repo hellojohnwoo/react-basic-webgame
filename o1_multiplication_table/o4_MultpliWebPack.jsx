@@ -11,7 +11,7 @@ const o4_MulitpliWebPack = () => {       // Destructuring assignment
     const onSubmitForm  = (e) => {
         e.preventDefault();
         if (parseInt(value) === firstNumber * secondNumber) {
-            setResult('Right Answer :' + value);
+            setResult('Right Answer : ' + value);
             setFirstNumber(Math.ceil(Math.random() * 9));
             setSecondNumber(Math.ceil(Math.random() * 9));
             setValue('');

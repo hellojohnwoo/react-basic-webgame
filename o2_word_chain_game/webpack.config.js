@@ -17,8 +17,19 @@ module.exports = {
             test: /\.jsx?$/,
             loader: 'babel-loader',
             options: {
-                presets:['@babel/preset-env', '@babel/preset-react'],
-                plugins: ['@babel/plugin-proposal-class-properties'],
+                presets: [
+                    ['@babel/preset-env', {
+                        targets: {
+                            browsers: ['> 1%'], // browserslist
+                        },
+                        debug: true,
+                    }],
+                    '@babel/preset-react',
+                ],
+                plugins: [
+                    '@babel/plugin-proposal-class-properties',
+                    'react-hot-loader/babel',
+                ],
             },
         }],
     },
@@ -26,5 +37,6 @@ module.exports = {
     output: {                                       // output
         path: path.join(__dirname, 'dist'),         // C:\users\john\webstorm\react-basic-webgame\o2_...\dist
         filename: 'app.js',
+        publicPath: '/dist/',                       // virtual path : app.user('/dist', express.static(__dirname, 'dist'))
     },
 }
