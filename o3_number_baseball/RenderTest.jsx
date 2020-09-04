@@ -1,29 +1,33 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from "react";
 
-class Test extends Component {
-	state = {
-		counter: 0,
-	};
+class Test extends PureComponent {
+  state = {
+    counter: 0,
+    string: "hello",
+    number: 1,
+    boolean: true,
+    object: {},
+		// array: [{ inside: [3] }], // NG, simple is best for avoid the miss
+		array: [100, 200, 300],
+  };
 
-	shouldComponentUpdate(nextProps, nextState, nextContext) {
-		if (this.state.counter !== nextState.counter) {
-			return true;
-		}
-		return false;
-	}
+  onClick = () => {
+		const obj = this.state.array[0].inside;
+		object.push(4);
+    this.setState({
+			object: {...this.state.object},
+      array: [...this.state.array, 1],
+    });
+  };
 
-	onClick = () => {
-		this.setState({ });
-	};
-
-	render() {
-		console.log('Rendering', this.state);
-		return (
-			<div>
-				<button onClick={this.onClick}>Click</button>
-			</div>
-		);
-	}
+  render() {
+    console.log("Rendering", this.state);
+    return (
+      <div>
+        <button onClick={this.onClick}>Click</button>
+      </div>
+    );
+  }
 }
 
 export default Test;
